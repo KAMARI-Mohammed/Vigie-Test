@@ -1,0 +1,6 @@
+# Ignore les fichiers Python compilés
+__pycache__/
+*.pyc
+
+# Ignore les fichiers locaux temporaires
+*.log
