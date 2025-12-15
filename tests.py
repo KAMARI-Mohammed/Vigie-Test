@@ -39,5 +39,14 @@ class TestOrdersProcessing(unittest.TestCase):
         self.assertEqual(len(suspects), 1)
 
 
+    def test_created_at_filter(self):
+        data = [
+            {"id": "o1", "marketplace": "amazon", "country": "FR", "amount_cents": 1000, "created_at": "2024-10-30T10:15:00Z"},
+            {"id": "o2", "marketplace": "amazon", "country": "FR", "amount_cents": 2000, "created_at": "2024-11-01T10:20:00Z"},
+        ]
+        stats,suspicious_orders = analyse_orders(iter(data), from_date="2024-11-01")
+        self.assertEqual(stats['revenue_total_eur'], 20.0)
+        self.assertEqual(len(suspicious_orders), 0)
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -42,6 +42,8 @@ def analyse_orders(orders:Iterable[Dict[str, Any]],from_date:Optional[str] =None
         if created_at_str:
             try:
                 dt = datetime.strptime(created_at_str, "%Y-%m-%dT%H:%M:%SZ")
+                if from_dt and dt < from_dt:
+                    continue
             except ValueError:
                 pass
 
