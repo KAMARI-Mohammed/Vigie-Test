@@ -29,7 +29,9 @@ Si ce programme tournait en production, que surveiller / logger en priorité ?
 - Erreurs de parsing JSON car sans lecture valide du fichier, le traitement s’arrête.
 - Nombre de commandes traitées
 - Nombre et type de commandes suspectes
+
 Si le fichier passait de 10 Ko → 10 Go, que changerais-tu dans ton approche ?
 - si le fichier passe de 10Ko a 10Go on essaye de  lire le fichier ligne par ligne, éviter toute accumulation d’objets en mémoire, de remplacer les logs détaillés par des métriques agrégées et de parser uniquement les champs nécessaires.
+
 Quel est selon toi le cas de test prioritaire, et pourquoi ?
 - Le cas prioritaire est la gestion des montants invalides ou négatifs, car il impacte directement le chiffre d’affaires, il révèle souvent des erreurs de données ou de flux amont et il peut fausser tous les calculs financiers
